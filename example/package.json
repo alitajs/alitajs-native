@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@capacitor/core": "^3.3.3",
+    "@capacitor/ios": "^3.3.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^3.3.3"
+  }
+}
