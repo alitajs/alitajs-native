@@ -4,9 +4,9 @@
   "description": "",
   "authors": {
     "name": "ashoka",
-    "email": ""
+    "email": "savebtc11@gmail.com"
   },
-  "repository": "/@alitajs/native",
+  "repository": "https://github.com/falcon11/alitajs-native",
   "scripts": {
     "start": "cross-env APP_ROOT=example umi dev",
     "build": "father-build",
