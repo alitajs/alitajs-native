@@ -16,11 +16,26 @@ export default function(api: IApi) {
   /**
    * Initialize Capacitor configuration by providing an app name, app ID, and an optional web directory for the existing web app
    */
-  function initNative() {
+  function initNative(
+    params: {
+      appName?: string;
+      appID?: string;
+      webDir?: string;
+    } = {},
+  ) {
     console.log(chalk.cyan('native init ...'));
     spawn.sync('yarn', ['add', '@capacitor/core'], { stdio: 'inherit' });
     spawn.sync('yarn', ['add', '-D', '@capacitor/cli'], { stdio: 'inherit' });
-    spawn.sync('npx', ['cap', 'init'], { stdio: 'inherit' });
+    const args = ['cap', 'init'];
+    const { appName, appID, webDir } = params;
+    if (appName) {
+      args.push(appName);
+    }
+    if (appID) {
+      args.push(appID);
+    }
+    args.push('--web-dir', webDir || api.config.outputPath || 'dist');
+    spawn.sync('npx', args, { stdio: 'inherit' });
   }
   /**
    * Add a native platform project to your app
@@ -149,7 +164,11 @@ export default function(api: IApi) {
       const subCommand = args._[0];
       switch (subCommand) {
         case 'init': {
-          initNative();
+          initNative({
+            appName: args._[1] as string,
+            appID: args._[2] as string,
+            webDir: args.webDir as string,
+          });
           break;
         }
         case 'add': {
