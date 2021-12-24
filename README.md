@@ -47,6 +47,11 @@ npx alita native add <platform>
 
 - `platform` (required): `android`, `ios`
 
+### Plugins
+
+- [Official plugins](https://github.com/ionic-team/capacitor-plugins)
+- [Community plugins](https://github.com/capacitor-community)
+
 ### Live reload
 
 Within `capacitor.config.json`, create a `server` entry then configure the `url` field using the local web server's IP address and port:
