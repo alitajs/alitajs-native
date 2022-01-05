@@ -1,0 +1,27 @@
+PODS:
+  - AlitaIOS (0.1.0):
+    - Capacitor (>= 3.3.3)
+  - Capacitor (3.3.3):
+    - CapacitorCordova
+  - CapacitorCordova (3.3.3)
+
+DEPENDENCIES:
+  - AlitaIOS (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Capacitor
+    - CapacitorCordova
+
+EXTERNAL SOURCES:
+  AlitaIOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AlitaIOS: 770aebe231c15d258ec87cf132c1420b32ec9170
+  Capacitor: 12eccd7fc495a508b09c4b78a96347979e0ce1c0
+  CapacitorCordova: 8f6815c74e4ca9d074ea1527f60c790855ded405
+
+PODFILE CHECKSUM: 106623c58debbf552472e7cf47b2017981bf2264
+
+COCOAPODS: 1.11.2

@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '12.0'
+
+target 'AlitaIOS_Example' do
+  pod 'AlitaIOS', :path => '../'
+
+  target 'AlitaIOS_Tests' do
+    inherit! :search_paths
+
+
+  end
+end
