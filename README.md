@@ -1,11 +1,11 @@
-# @alitajs/native
+# alita-native
 
 [![NPM version](https://img.shields.io/npm/v/@alitajs/native.svg?style=flat)](https://npmjs.org/package/@alitajs/native) [![NPM downloads](http://img.shields.io/npm/dm/@alitajs/native.svg?style=flat)](https://npmjs.org/package/@alitajs/native)
 
 ## Install
 
 ```bash
-yarn add @alitajs/native
+yarn add alita-native
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ Configure in `.umirc.js`,
 
 ```js
 export default {
-  plugins: [['@alitajs/native']],
+  plugins: [['alita-native']],
 };
 ```
 
