@@ -15,7 +15,6 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		94A8C6241396B63EB57ADA50 /* Pods_AlitaIOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8C8838EFB8273557D232D0 /* Pods_AlitaIOS_Example.framework */; };
 		D2C01AAFDDA59E0589E7B8EC /* Pods_AlitaIOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF42E6ACD955CFCAEFAB7FC /* Pods_AlitaIOS_Tests.framework */; };
-		F9B2FDD42785A22A00E70565 /* public in Resources */ = {isa = PBXBuildFile; fileRef = F9B2FDD32785A22A00E70565 /* public */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +46,6 @@
 		BA141F9C72ADE5613854F090 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BE12E18BCDAD10768B0456FF /* Pods-AlitaIOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlitaIOS_Example.release.xcconfig"; path = "Target Support Files/Pods-AlitaIOS_Example/Pods-AlitaIOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D7F58B2B347E6634DEA3270D /* Pods-AlitaIOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlitaIOS_Tests.release.xcconfig"; path = "Target Support Files/Pods-AlitaIOS_Tests/Pods-AlitaIOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F9B2FDD32785A22A00E70565 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		FAF42E6ACD955CFCAEFAB7FC /* Pods_AlitaIOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlitaIOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,7 +93,6 @@
 		607FACD21AFB9204008FA782 /* Example for AlitaIOS */ = {
 			isa = PBXGroup;
 			children = (
-				F9B2FDD32785A22A00E70565 /* public */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -250,7 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				F9B2FDD42785A22A00E70565 /* public in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);

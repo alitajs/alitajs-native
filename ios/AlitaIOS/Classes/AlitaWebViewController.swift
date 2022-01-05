@@ -42,6 +42,15 @@ import Capacitor
         }
         if let serverURL = self.serverURL {
             descriptor.serverURL = serverURL
+            // 如果 appLocation 对应的文件夹不存在，那么使用 AlitaIOS 内置的 public 文件夹
+            if (!FileManager.default.fileExists(atPath: descriptor.appLocation.path)) {
+                let alitaBundle = Bundle(for: Self.self);
+                guard let appLocation = alitaBundle.url(forResource: "public", withExtension: nil) else {
+                    CAPLog.print("ERROR: Required public folder in AlitaIOS not found. AlitaIOS will not work")
+                    return descriptor
+                }
+                descriptor.appLocation = appLocation
+            }
         }
         return descriptor
     }
