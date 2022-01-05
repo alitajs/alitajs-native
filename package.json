@@ -1,5 +1,5 @@
 {
-  "name": "@alitajs/native-2.0",
+  "name": "@alitajs/native2",
   "version": "0.0.1",
   "main": "lib/index.js",
   "description": "alita native plugin for alita@2.0",
