@@ -1,6 +1,7 @@
 // ref:
 // - https://umijs.org/plugins/api
 import { IApi } from '@umijs/types';
+import * as child_process from 'child_process';
 
 type Platform = 'ios' | 'android';
 
@@ -8,15 +9,75 @@ interface SyncOptions {
   deployment?: boolean;
 }
 
+function getNpmClient() {
+  if (process.env.npm_config_user_agent === 'npm') return 'npm';
+  return 'yarn';
+}
+
 export default function(api: IApi) {
   const {
-    paths,
-    utils: { chalk, spawn, yargs },
+    utils: { chalk, spawn: crossSpawn, yParser },
   } = api;
+  async function spawnSync(
+    command: string,
+    args: string[] = [],
+    options: child_process.SpawnSyncOptions = {},
+  ) {
+    console.log(chalk.cyan('spawnSync:', command, args.join(' ')));
+    return new Promise((resolve, reject) => {
+      const child = crossSpawn(command, args, { stdio: 'inherit', ...options });
+      child
+        .on('close', code => {
+          if (code !== 0) {
+            reject({
+              command: `${command} ${args.join(' ')}`,
+            });
+            return;
+          }
+          resolve(0);
+        })
+        .on('error', err => {
+          console.log('error', err);
+        });
+    });
+  }
+
+  async function installDependencies(
+    dependencies: string | string[],
+    { isDev = false } = {},
+  ) {
+    const npmClient = getNpmClient();
+    if (['yarn', 'pnpm'].indexOf(npmClient) !== -1) {
+      const args = ['add'];
+      if (isDev) {
+        args.push('-D');
+      }
+      if (typeof dependencies === 'string') {
+        args.push(dependencies);
+      } else if (Array.isArray(dependencies)) {
+        args.push(...dependencies);
+      }
+      await spawnSync(npmClient, args);
+    } else if ('npm' === npmClient) {
+      const args = ['install'];
+      if (isDev) {
+        args.push('--save-dev');
+      }
+      if (typeof dependencies === 'string') {
+        args.push(dependencies);
+      } else if (Array.isArray(dependencies)) {
+        args.push(...dependencies);
+      }
+      await spawnSync(npmClient, args);
+    } else {
+      console.error(chalk.red(`Unknown npm client: ${npmClient}`));
+      process.exit(1);
+    }
+  }
   /**
    * Initialize Capacitor configuration by providing an app name, app ID, and an optional web directory for the existing web app
    */
-  function initNative(
+  async function initNative(
     params: {
       appName?: string;
       appID?: string;
@@ -24,8 +85,8 @@ export default function(api: IApi) {
     } = {},
   ) {
     console.log(chalk.cyan('native init ...'));
-    spawn.sync('yarn', ['add', '@capacitor/core'], { stdio: 'inherit' });
-    spawn.sync('yarn', ['add', '-D', '@capacitor/cli'], { stdio: 'inherit' });
+    await installDependencies('@capacitor/core');
+    await installDependencies('@capacitor/cli', { isDev: true });
     const args = ['cap', 'init'];
     const { appName, appID, webDir } = params;
     if (appName) {
@@ -35,23 +96,23 @@ export default function(api: IApi) {
       args.push(appID);
     }
     args.push('--web-dir', webDir || api.config.outputPath || 'dist');
-    spawn.sync('npx', args, { stdio: 'inherit' });
+    await spawnSync('npx', args);
   }
   /**
    * Add a native platform project to your app
    * @param platform
    */
-  function addPlatform(platform: Platform) {
+  async function addPlatform(platform: Platform) {
     console.log(chalk.cyan(`add platform ${platform} ...`));
-    spawn.sync('yarn', ['add', `@capacitor/${platform}`], { stdio: 'inherit' });
-    spawn.sync('npx', ['cap', 'add', platform], { stdio: 'inherit' });
+    await installDependencies(`@capacitor/${platform}`);
+    await spawnSync('npx', ['cap', 'add', platform]);
   }
   /**
    * Copy the web app build and Capacitor configuration file into the native platform project. Run this each time you make changes to your web app or change a configuration value
    * @param params
    * @param params.platform android, ios
    */
-  function copyAssets({ platform }: { platform: Platform }) {
+  async function copyAssets({ platform }: { platform: Platform }) {
     console.log(
       chalk.cyan(`copy assets to ${platform ?? 'ios and android'} ...`),
     );
@@ -59,7 +120,7 @@ export default function(api: IApi) {
     if (platform) {
       params.push(platform);
     }
-    spawn.sync('npx', params, { stdio: 'inherit' });
+    await spawnSync('npx', params);
   }
 
   /**
@@ -68,7 +129,7 @@ export default function(api: IApi) {
    * @param params.deployment Podfile.lock won’t be deleted and pod install will use --deployment option
    * @param params.platform android, ios
    */
-  function updatePlugins(
+  async function updatePlugins(
     params: {
       deployment?: boolean;
       platform?: Platform;
@@ -83,13 +144,13 @@ export default function(api: IApi) {
     if (platform) {
       options.push(platform);
     }
-    spawn.sync('npx', options, { stdio: 'inherit' });
+    await spawnSync('npx', options);
   }
   /**
    * This command runs copy and then update
    * @param params
    */
-  function syncProject({
+  async function syncProject({
     options = {},
     platform,
   }: {
@@ -104,33 +165,33 @@ export default function(api: IApi) {
     if (platform) {
       params.push(platform);
     }
-    spawn.sync('npx', params, { stdio: 'inherit' });
+    await spawnSync('npx', params);
   }
   /**
    * List all installed Cordova and Capacitor plugins.
    * @param params
    * @param params.platform android, ios
    */
-  function listPlugins(params: { platform: Platform }) {
+  async function listPlugins(params: { platform: Platform }) {
     console.log(chalk.cyan('list plugins ...'));
     const options = ['cap', 'ls'];
     if (params.platform) {
       options.push(params.platform);
     }
-    spawn.sync('npx', options, { stdio: 'inherit' });
+    await spawnSync('npx', options);
   }
   /**
    * Opens the native project workspace in the specified native IDE (Xcode for iOS, Android Studio for Android)
    * @param params
    * @param params.platform android, ios
    */
-  function openProject(params: { platform: Platform }) {
+  async function openProject(params: { platform: Platform }) {
     console.log(chalk.cyan('open project ...'));
     const options = ['cap', 'open'];
     if (params.platform) {
       options.push(params.platform);
     }
-    spawn.sync('npx', options, { stdio: 'inherit' });
+    await spawnSync('npx', options);
   }
   /**
    * This command first runs sync, then it builds and deploys the native app to a target device of your choice
@@ -140,7 +201,7 @@ export default function(api: IApi) {
    * @param params.options.target The target device to deploy to
    * @param params.platform android, ios
    */
-  function runProject(params: {
+  async function runProject(params: {
     options?: { list?: boolean; target?: string };
     platform: Platform;
   }) {
@@ -155,7 +216,7 @@ export default function(api: IApi) {
     if (params.platform) {
       args.push(params.platform);
     }
-    spawn.sync('npx', args, { stdio: 'inherit' });
+    await spawnSync('npx', args);
   }
   api.registerCommand({
     name: 'native',
@@ -164,7 +225,7 @@ export default function(api: IApi) {
       const subCommand = args._[0];
       switch (subCommand) {
         case 'init': {
-          initNative({
+          await initNative({
             appName: args._[1] as string,
             appID: args._[2] as string,
             webDir: args.webDir as string,
@@ -173,44 +234,44 @@ export default function(api: IApi) {
         }
         case 'add': {
           const platform = args._[1] as Platform;
-          addPlatform(platform);
+          await addPlatform(platform);
           break;
         }
         case 'copy': {
-          copyAssets({ platform: args._[1] as Platform });
+          await copyAssets({ platform: args._[1] as Platform });
           break;
         }
         case 'update': {
-          const _args = yargs
-            .boolean('deployment')
-            .parse(process.argv.slice(3));
-          updatePlugins({
+          const _args = yParser(process.argv.slice(3), {
+            boolean: ['deployment'],
+          });
+          await updatePlugins({
             deployment: _args.deployment,
             platform: _args._[1] as Platform,
           });
           break;
         }
         case 'sync': {
-          const _args = yargs
-            .boolean('deployment')
-            .parse(process.argv.slice(3));
-          syncProject({
+          const _args = yParser(process.argv.slice(3), {
+            boolean: ['deployment'],
+          });
+          await syncProject({
             options: { deployment: _args.deployment },
             platform: _args._[1] as Platform,
           });
           break;
         }
         case 'ls': {
-          listPlugins({ platform: args._[1] as Platform });
+          await listPlugins({ platform: args._[1] as Platform });
           break;
         }
         case 'open': {
-          openProject({ platform: args._[1] as Platform });
+          await openProject({ platform: args._[1] as Platform });
           break;
         }
         case 'run': {
-          const _args = yargs.boolean('list').parse(process.argv.slice(3));
-          runProject({
+          const _args = yParser(process.argv.slice(3), { boolean: ['list'] });
+          await runProject({
             options: {
               list: _args.list,
               target: _args.target as string,
