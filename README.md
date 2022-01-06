@@ -1,6 +1,6 @@
 # alita-native
 
-[![NPM version](https://img.shields.io/npm/v/@alitajs/native.svg?style=flat)](https://npmjs.org/package/@alitajs/native) [![NPM downloads](http://img.shields.io/npm/dm/@alitajs/native.svg?style=flat)](https://npmjs.org/package/@alitajs/native)
+[![NPM version](https://img.shields.io/npm/v/alita-native.svg?style=flat)](https://npmjs.org/package/alita-native) [![NPM downloads](http://img.shields.io/npm/dm/alita-native.svg?style=flat)](https://npmjs.org/package/alita-native)
 
 ## Install
 

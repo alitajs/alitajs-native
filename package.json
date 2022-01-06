@@ -58,7 +58,9 @@
     "pre-commit": "lint-staged"
   },
   "files": [
-    "lib"
+    "lib",
+    "ios/AlitaIOS",
+    "ios/AlitaIOS.podspec"
   ],
   "publishConfig": {
     "access": "public"
