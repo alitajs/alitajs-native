@@ -15,7 +15,7 @@ export default () => {
     try {
       const images = await Camera.pickImages({ quality: 90 });
       setPhoto(images.photos[0]);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   };

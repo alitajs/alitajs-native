@@ -41,6 +41,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Use Camera Capture Photoes</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Use Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Use Location</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Save Photo to Library</string>
 	<key>NSPhotoLibraryUsageDescription</key>

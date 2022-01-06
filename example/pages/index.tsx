@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Helmet } from 'umi';
+import { useHistory } from 'umi';
 import styles from './index.css';
 
 const plugins = [
@@ -14,7 +14,7 @@ const plugins = [
   'Filesystem',
   'Geolocation',
   'Keyboard',
-  'Local Notification',
+  'Local Notifications',
   'Network',
   'Push Notification',
   'Share',
