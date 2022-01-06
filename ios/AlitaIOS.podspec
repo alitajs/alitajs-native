@@ -9,36 +9,20 @@
 Pod::Spec.new do |s|
   s.name             = 'AlitaIOS'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of AlitaIOS.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
+  s.summary          = 'Alita iOS SDK'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Alita iOS SDK is a wrapper of Capacitor. Support open web through URL or custom web folder.
                        DESC
-
-  s.homepage         = 'https://github.com/falcon11/AlitaIOS'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/falcon11/alitajs-native/ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'falcon11' => 'savebtc11@gmail.com' }
-  s.source           = { :git => 'https://github.com/falcon11/AlitaIOS.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  s.source           = { :git => 'https://github.com/falcon11/alitajs-native.git', :tag => s.version.to_s }
   s.ios.deployment_target = '12.0'
-
   s.source_files = 'AlitaIOS/Classes/**/*'
-
-  # s.resource_bundles = {
-  #   'AlitaIOS' => ['AlitaIOS/Assets/*.png']
-  # }
-  
-  s.resources = ['AlitaIOS/Assets/public']
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.resources = [
+    'AlitaIOS/Assets/public',
+    'AlitaIOS/Assets/capacitor.config.json',
+    'AlitaIOS/Assets/config.xml'
+  ]
   s.dependency 'Capacitor', '>= 3.3.3'
 end

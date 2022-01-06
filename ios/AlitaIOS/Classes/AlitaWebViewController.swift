@@ -29,28 +29,38 @@ import Capacitor
         super.init(nibName: nil, bundle: nil)
     }
     
+    public init(serverURL: String?, appURL: URL?, configURL: URL?, cordovaConfiguration: URL?) {
+        self.serverURL = serverURL
+        self.appURL = appURL
+        self.configURL = configURL
+        self.cordovaConfiguration = cordovaConfiguration
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
     open override func instanceDescriptor() -> InstanceDescriptor {
         let descriptor: InstanceDescriptor
-        if let appURL = self.appURL {
-            descriptor = InstanceDescriptor(at: appURL, configuration: configURL, cordovaConfiguration: cordovaConfiguration)
+        let alitaBundle = Bundle(for: Self.self);
+        if self.appURL != nil || self.serverURL != nil {
+            // 如果 configURL 为空，那么使用 AlitaIOS 内置的 capacitor.config.json
+            self.configURL = self.configURL ?? alitaBundle.url(forResource: "capacitor.config", withExtension: "json")
+            // 如果 cordovaConfiguration 为空，那么使用 AlitaIOS 内置的 config.xml
+            self.cordovaConfiguration = self.cordovaConfiguration ?? alitaBundle.url(forResource: "config", withExtension: "xml")
+            // 如果 appURL 对应的文件夹不存在，那么使用 AlitaIOS 内置的 public 文件夹
+            self.appURL = self.appURL ?? alitaBundle.url(forResource: "public", withExtension: nil)
+            if self.appURL != nil && FileManager.default.fileExists(atPath: self.appURL!.path) {
+                descriptor = InstanceDescriptor(at: self.appURL!, configuration: self.configURL, cordovaConfiguration: self.cordovaConfiguration)
+            } else {
+                descriptor = super.instanceDescriptor()
+            }
         } else {
             descriptor = super.instanceDescriptor()
         }
         if let serverURL = self.serverURL {
             descriptor.serverURL = serverURL
-            // 如果 appLocation 对应的文件夹不存在，那么使用 AlitaIOS 内置的 public 文件夹
-            if (!FileManager.default.fileExists(atPath: descriptor.appLocation.path)) {
-                let alitaBundle = Bundle(for: Self.self);
-                guard let appLocation = alitaBundle.url(forResource: "public", withExtension: nil) else {
-                    CAPLog.print("ERROR: Required public folder in AlitaIOS not found. AlitaIOS will not work")
-                    return descriptor
-                }
-                descriptor.appLocation = appLocation
-            }
         }
         return descriptor
     }

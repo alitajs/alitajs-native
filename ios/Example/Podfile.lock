@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AlitaIOS: 770aebe231c15d258ec87cf132c1420b32ec9170
+  AlitaIOS: d1eef79627d2fec071c7d046d6702514b1166d6b
   Capacitor: 12eccd7fc495a508b09c4b78a96347979e0ce1c0
   CapacitorCordova: 8f6815c74e4ca9d074ea1527f60c790855ded405
 
