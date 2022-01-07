@@ -1,0 +1,121 @@
+PODS:
+  - AlitaIOS (0.1.0):
+    - Capacitor (>= 3.3.3)
+    - CapacitorActionSheet
+    - CapacitorApp
+    - CapacitorAppLauncher
+    - CapacitorBrowser
+    - CapacitorCamera
+    - CapacitorClipboard
+    - CapacitorDevice
+    - CapacitorDialog
+    - CapacitorFilesystem
+    - CapacitorGeolocation
+    - CapacitorKeyboard
+    - CapacitorLocalNotifications
+    - CapacitorNetwork
+    - CapacitorPushNotifications
+    - CapacitorShare
+    - CapacitorStatusBar
+    - CapacitorStorage
+    - CapacitorToast
+  - Capacitor (3.3.3):
+    - CapacitorCordova
+  - CapacitorActionSheet (1.0.6):
+    - Capacitor
+  - CapacitorApp (1.0.7):
+    - Capacitor
+  - CapacitorAppLauncher (1.0.7):
+    - Capacitor
+  - CapacitorBrowser (1.0.6):
+    - Capacitor
+  - CapacitorCamera (1.2.2):
+    - Capacitor
+  - CapacitorClipboard (1.0.6):
+    - Capacitor
+  - CapacitorCordova (3.3.3)
+  - CapacitorDevice (1.1.1):
+    - Capacitor
+  - CapacitorDialog (1.0.6):
+    - Capacitor
+  - CapacitorFilesystem (1.0.6):
+    - Capacitor
+  - CapacitorGeolocation (1.3.0):
+    - Capacitor
+  - CapacitorKeyboard (1.2.0):
+    - Capacitor
+  - CapacitorLocalNotifications (1.0.9):
+    - Capacitor
+  - CapacitorNetwork (1.0.6):
+    - Capacitor
+    - ReachabilitySwift (~> 5.0)
+  - CapacitorPushNotifications (1.0.7):
+    - Capacitor
+  - CapacitorShare (1.0.7):
+    - Capacitor
+  - CapacitorStatusBar (1.0.6):
+    - Capacitor
+  - CapacitorStorage (1.2.3):
+    - Capacitor
+  - CapacitorToast (1.0.6):
+    - Capacitor
+  - ReachabilitySwift (5.0.0)
+
+DEPENDENCIES:
+  - AlitaIOS (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Capacitor
+    - CapacitorActionSheet
+    - CapacitorApp
+    - CapacitorAppLauncher
+    - CapacitorBrowser
+    - CapacitorCamera
+    - CapacitorClipboard
+    - CapacitorCordova
+    - CapacitorDevice
+    - CapacitorDialog
+    - CapacitorFilesystem
+    - CapacitorGeolocation
+    - CapacitorKeyboard
+    - CapacitorLocalNotifications
+    - CapacitorNetwork
+    - CapacitorPushNotifications
+    - CapacitorShare
+    - CapacitorStatusBar
+    - CapacitorStorage
+    - CapacitorToast
+    - ReachabilitySwift
+
+EXTERNAL SOURCES:
+  AlitaIOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AlitaIOS: 2d4322e05cb529ce3650531dc5056f28acdabf43
+  Capacitor: 12eccd7fc495a508b09c4b78a96347979e0ce1c0
+  CapacitorActionSheet: ddfc2d50b2518bf7cb05f107e0870401b1c0b183
+  CapacitorApp: 5aef6129d5e78c23783b48209290da90f835d7ec
+  CapacitorAppLauncher: 7a67c6b3c8098159f333c6cff466201b1aacdb76
+  CapacitorBrowser: dd3a22b097c6e006db7d4e97438f95a8bb546619
+  CapacitorCamera: f318e5d4b1126b52768e2aae9dee69a1ca0eb059
+  CapacitorClipboard: 279847f021ee49cb903316f536fd8d77721e9c04
+  CapacitorCordova: 8f6815c74e4ca9d074ea1527f60c790855ded405
+  CapacitorDevice: 8bf439024d7889f9cb986bcfb0a54040547a3446
+  CapacitorDialog: 8df49a4809efbd28bd29e381c041fd07191c7ad4
+  CapacitorFilesystem: 7db4b74c45bf34ad5f100182c3ffb2492f688149
+  CapacitorGeolocation: a722dc495a068b04fa8626710bf110de2eb9762b
+  CapacitorKeyboard: f94b9a920070b15d520973954ca6b3b39cc7dd21
+  CapacitorLocalNotifications: 1e242276132fa6a5bfb25f96ed73cb2a908ee05b
+  CapacitorNetwork: 4e1a2085f335c9e024d1cd0537c057e00a874fe2
+  CapacitorPushNotifications: f973b2dca19aef3dfbe13ca41b77b22c340d93b4
+  CapacitorShare: be9d87857694b2118e47fe0d7d1e050f6a2f48e9
+  CapacitorStatusBar: 18a81121a25117a50a9ca3be0d0de85a1e49c7e5
+  CapacitorStorage: 229dbc333a93764ba0a1b99c4fa22bbb37b47e45
+  CapacitorToast: ac17b569d5c4fcffa2be1e4b2da3b3012a02c690
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+
+PODFILE CHECKSUM: 106623c58debbf552472e7cf47b2017981bf2264
+
+COCOAPODS: 1.11.2

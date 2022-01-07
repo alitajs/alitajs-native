@@ -1,11 +1,27 @@
 {
   "dependencies": {
+    "@capacitor/action-sheet": "^1.0.6",
     "@capacitor/android": "^3.3.3",
+    "@capacitor/app": "^1.0.7",
+    "@capacitor/app-launcher": "^1.0.7",
     "@capacitor/browser": "^1.0.6",
+    "@capacitor/camera": "^1.2.2",
+    "@capacitor/clipboard": "^1.0.6",
     "@capacitor/core": "^3.3.3",
     "@capacitor/device": "^1.1.1",
+    "@capacitor/dialog": "^1.0.6",
+    "@capacitor/filesystem": "^1.0.6",
+    "@capacitor/geolocation": "^1.3.0",
     "@capacitor/ios": "^3.3.3",
-    "@capacitor/toast": "^1.0.6"
+    "@capacitor/keyboard": "^1.2.0",
+    "@capacitor/local-notifications": "^1.0.9",
+    "@capacitor/network": "^1.0.6",
+    "@capacitor/push-notifications": "^1.0.7",
+    "@capacitor/share": "^1.0.7",
+    "@capacitor/status-bar": "^1.0.6",
+    "@capacitor/storage": "^1.2.3",
+    "@capacitor/toast": "^1.0.6",
+    "@umijs/plugin-helmet": "^1.1.4"
   },
   "devDependencies": {
     "@capacitor/cli": "^3.3.3"
