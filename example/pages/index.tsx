@@ -16,7 +16,7 @@ const plugins = [
   'Keyboard',
   'Local Notifications',
   'Network',
-  'Push Notification',
+  'Push Notifications',
   'Share',
   'Status Bar',
   'Storage',

@@ -1,6 +1,15 @@
 {
-	"appId": "com.alita.app",
-	"appName": "Alita",
-	"webDir": "dist",
-	"bundledWebRuntime": false
+  "appId": "com.alita.app",
+  "appName": "Alita",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
+    }
+  }
 }
