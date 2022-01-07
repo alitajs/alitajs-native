@@ -1,13 +1,13 @@
 {
   "name": "alita-native",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "lib/index.js",
   "description": "alita native plugin for alita@2.0",
   "authors": {
     "name": "ashoka",
     "email": "savebtc11@gmail.com"
   },
-  "repository": "https://github.com/falcon11/alitajs-native",
+  "repository": "https://github.com/alitajs/alitajs-native.git",
   "scripts": {
     "start": "cross-env APP_ROOT=example umi dev",
     "build": "father-build",
