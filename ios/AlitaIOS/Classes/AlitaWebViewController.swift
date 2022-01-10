@@ -17,19 +17,19 @@ import Capacitor
         self.init(serverURL: nil)
     }
     
-    public init(serverURL: String?) {
+    @objc public init(serverURL: String?) {
         self.serverURL = serverURL
         super.init(nibName: nil, bundle: nil)
     }
     
-    public init(appURL: URL?, configURL: URL?, cordovaConfiguration: URL?) {
+    @objc public init(appURL: URL?, configURL: URL?, cordovaConfiguration: URL?) {
         self.appURL = appURL
         self.configURL = configURL
         self.cordovaConfiguration = cordovaConfiguration
         super.init(nibName: nil, bundle: nil)
     }
     
-    public init(serverURL: String?, appURL: URL?, configURL: URL?, cordovaConfiguration: URL?) {
+    @objc public init(serverURL: String?, appURL: URL?, configURL: URL?, cordovaConfiguration: URL?) {
         self.serverURL = serverURL
         self.appURL = appURL
         self.configURL = configURL

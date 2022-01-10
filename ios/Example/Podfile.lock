@@ -93,7 +93,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AlitaIOS: 5e67d33965ac835d5f77fe4af898670cb690d7f7
+  AlitaIOS: e8e8d482f8607eae22fb31499e345a48c4d06815
   Capacitor: 12eccd7fc495a508b09c4b78a96347979e0ce1c0
   CapacitorActionSheet: ddfc2d50b2518bf7cb05f107e0870401b1c0b183
   CapacitorApp: 5aef6129d5e78c23783b48209290da90f835d7ec
