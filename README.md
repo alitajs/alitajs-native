@@ -34,6 +34,7 @@ npx alita native init <appName> <appID>
 <strong>Options:</strong>
 
 - `--web-dir <value>`: The existing web application to use with initialization, default `dist`
+- `--all`: Add ios and android platform. Add frequently used plugins.
 
 ### Add platform
 
@@ -51,6 +52,12 @@ npx alita native add <platform>
 
 - [Official plugins](https://github.com/ionic-team/capacitor-plugins)
 - [Community plugins](https://github.com/capacitor-community)
+
+```sh
+npx alita native plugins
+```
+
+This command will install frequently used plugins.
 
 ### Live reload
 
