@@ -16,7 +16,7 @@ Alita iOS SDK is a wrapper of Capacitor. Support open web through URL or custom 
   s.homepage         = 'https://github.com/alitajs/alitajs-native/tree/main/ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'falcon11' => 'savebtc11@gmail.com' }
-  s.source           = { :git => 'https://github.com/alitajs/alitajs-native.git', :tag => 'AlitaIOS@'+s.version.to_s }
+  s.source           = { :git => 'https://github.com/alitajs/alitajs-native.git', :tag => s.name.to_s + '@'+s.version.to_s }
   s.ios.deployment_target = '12.0'
   s.source_files = 'ios/AlitaIOS/Classes/**/*', 'AlitaIOS/Classes/**/*'
   s.resources = [
@@ -46,4 +46,5 @@ Alita iOS SDK is a wrapper of Capacitor. Support open web through URL or custom 
   s.dependency 'CapacitorStatusBar'
   s.dependency 'CapacitorStorage'
   s.dependency 'CapacitorToast'
+  s.swift_version = '5.1'
 end
