@@ -2,6 +2,7 @@
 // - https://umijs.org/plugins/api
 import { IApi } from '@umijs/types';
 import * as child_process from 'child_process';
+import { embeddedPlugins } from './plugins';
 
 type Platform = 'ios' | 'android';
 
@@ -82,13 +83,14 @@ export default function(api: IApi) {
       appName?: string;
       appID?: string;
       webDir?: string;
+      all?: boolean;
     } = {},
   ) {
     console.log(chalk.cyan('native init ...'));
     await installDependencies('@capacitor/core');
     await installDependencies('@capacitor/cli', { isDev: true });
     const args = ['cap', 'init'];
-    const { appName, appID, webDir } = params;
+    const { appName, appID, webDir, all } = params;
     if (appName) {
       args.push(appName);
     }
@@ -97,6 +99,12 @@ export default function(api: IApi) {
     }
     args.push('--web-dir', webDir || api.config.outputPath || 'dist');
     await spawnSync('npx', args);
+    if (all) {
+      await addPlatform('ios');
+      await addPlatform('android');
+      await installDependencies(embeddedPlugins);
+      await syncProject();
+    }
   }
   /**
    * Add a native platform project to your app
@@ -156,7 +164,7 @@ export default function(api: IApi) {
   }: {
     options?: SyncOptions;
     platform?: Platform;
-  }) {
+  } = {}) {
     console.log(chalk.cyan('sync project ...'));
     const params = ['cap', 'sync'];
     if (options.deployment) {
@@ -218,6 +226,13 @@ export default function(api: IApi) {
     }
     await spawnSync('npx', args);
   }
+  /**
+   * Install embedded plugins
+   */
+  async function installPlugins() {
+    const plugins = embeddedPlugins;
+    await installDependencies(plugins);
+  }
   api.registerCommand({
     name: 'native',
     description: 'native support',
@@ -225,10 +240,14 @@ export default function(api: IApi) {
       const subCommand = args._[0];
       switch (subCommand) {
         case 'init': {
+          const _args = yParser(process.argv.slice(3), {
+            boolean: ['all'],
+          });
           await initNative({
             appName: args._[1] as string,
             appID: args._[2] as string,
             webDir: args.webDir as string,
+            all: _args.all,
           });
           break;
         }
@@ -278,6 +297,10 @@ export default function(api: IApi) {
             },
             platform: _args._[1] as Platform,
           });
+          break;
+        }
+        case 'plugins': {
+          await installPlugins();
           break;
         }
       }
