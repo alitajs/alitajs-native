@@ -15,7 +15,11 @@
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
     "test:update": "umi-test --updateSnapshot",
-    "build-examples": "cross-env APP_ROOT=example umi build"
+    "build-examples": "cross-env APP_ROOT=example umi build",
+    "doc:dev": "dumi dev",
+    "docs:build": "dumi build",
+    "docs:deploy": "gh-pages -d dist",
+    "deploy": "npm run docs:build && npm run docs:deploy"
   },
   "lint-staged": {
     "*.ts?(x)": [
@@ -52,7 +56,9 @@
     "react-test-renderer": "^16.9.0",
     "test-umi-plugin": "^0.1.0",
     "umi": "^3.5.20",
-    "yorkie": "^2.0.0"
+    "yorkie": "^2.0.0",
+    "dumi": "^1.1.0",
+    "gh-pages": "^3.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
