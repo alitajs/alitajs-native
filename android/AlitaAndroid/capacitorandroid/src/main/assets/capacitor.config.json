@@ -1,0 +1,6 @@
+{
+	"appId": "com.iwhale.app",
+	"appName": "App",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
