@@ -16,7 +16,7 @@
     "test:coverage": "umi-test --coverage",
     "test:update": "umi-test --updateSnapshot",
     "build-examples": "cross-env APP_ROOT=example umi build",
-    "doc:dev": "dumi dev",
+    "docs:dev": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d dist",
     "deploy": "npm run docs:build && npm run docs:deploy"
