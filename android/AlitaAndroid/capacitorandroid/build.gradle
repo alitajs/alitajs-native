@@ -30,7 +30,7 @@ android {
     publishing {
       repositories { RepositoryHandler handler ->
         handler.maven {
-          url "${rootDir}/repo"
+          url "${rootDir}"
         }
       }
       publications {
