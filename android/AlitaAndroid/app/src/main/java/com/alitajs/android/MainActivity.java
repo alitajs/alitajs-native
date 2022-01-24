@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         Intent intent = new Intent(MainActivity.this, AlitaJsActivity.class);
-        intent.putExtra("serverUrl", "http://10.128.3.95:8000");
+        intent.putExtra("serverUrl", "http://10.128.3.84:8000");
         startActivity(intent);
       }
     });

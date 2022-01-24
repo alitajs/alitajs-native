@@ -74,4 +74,31 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ### android
 
-TODO
+```sh
+cd android/AlitaAndroid
+```
+
+用 `Android Studio` 打开工程
+
+修改 `MainActivity.java`
+
+```java
+public class MainActivity extends AppCompatActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+    findViewById(R.id.main_button).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this, AlitaJsActivity.class);
+        // 将下面 ip 改成电脑 ip
+        intent.putExtra("serverUrl", "http://10.128.3.84:8000");
+        startActivity(intent);
+      }
+    });
+  }
+}
+```
+
+然后在 `Android Studio` 运行工程
