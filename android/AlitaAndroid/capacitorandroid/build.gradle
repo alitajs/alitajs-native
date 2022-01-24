@@ -1,6 +1,5 @@
 plugins {
   id 'com.android.library'
-  id 'maven-publish'
 }
 
 android {
@@ -24,30 +23,6 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-  }
-
-  afterEvaluate {
-    publishing {
-      repositories { RepositoryHandler handler ->
-        handler.maven {
-          url "${rootDir}"
-        }
-      }
-      publications {
-        // Creates a Maven publication called "release".
-        release(MavenPublication) {
-          // Applies the component for the release build variant.
-//          from components.release
-          afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) } // 方式一：生成aar包
-          // artifact "$buildDir/outputs/aar/${project.name}-release.aar" // 方式二：指定生成的aar路径
-
-          // You can then customize attributes of the publication as shown below.
-          groupId = 'com.alitajs.android'
-          artifactId = 'alitaJsAndroid'
-          version = '1.0.0'
-        }
-      }
-    }
   }
 }
 
@@ -80,3 +55,9 @@ dependencies {
   implementation 'com.capacitorjs:storage:1.2.3'
   implementation 'com.capacitorjs:toast:1.0.6'
 }
+
+ext {
+  PUBLISH_ARTIFACT_ID = "alitaJsAndroid"
+}
+
+apply from: '../maven-publish.gradle'
