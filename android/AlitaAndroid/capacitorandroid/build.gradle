@@ -55,3 +55,9 @@ dependencies {
   implementation 'com.capacitorjs:storage:1.2.3'
   implementation 'com.capacitorjs:toast:1.0.6'
 }
+
+ext {
+  PUBLISH_ARTIFACT_ID = "alitaJsAndroid"
+}
+
+apply from: '../maven-publish.gradle'

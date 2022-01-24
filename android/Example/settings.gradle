@@ -1,10 +1,12 @@
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
-    }
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    maven { url 'https://raw.githubusercontent.com/chen504554911/alitajs-native/main/' }
+    google()
+    mavenCentral()
+    jcenter() // Warning: this repository is going to shut down soon
+    maven { url 'https://jitpack.io' }
+  }
 }
 rootProject.name = "Example"
 include ':app'
