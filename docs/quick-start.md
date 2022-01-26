@@ -96,14 +96,14 @@ npx alita native run android
 如果想通过 `Android Studio` 运行，那么需要先运行下面命令，将原生插件同步到原生工程里，然后通过 `Android` 运行项目
 
 ```sh
-npx alita native sync ios
+npx alita native sync android
 ```
 
 **推荐先通过 `Android Studio` 运行一次，提高直接命令行运行成功率**
 
 ## 使用原生插件
 
-可以在 `package.json` 里的 `dependencies` 看到所有原生插件，原生插件的包名一般以 `@capacitor/` 或 `@capacitor-community/` 开头，还有一些我们开发的插件，以 `@alitajs/` 开头。可以到 [plugins.md](./plugins) 插件目前常用的一些插件。当然，也可以自己从网上找一些其他插件，可能并不是以这些前缀开头。
+可以在 `package.json` 里的 `dependencies` 看到所有原生插件，原生插件的包名一般以 `@capacitor/` 或 `@capacitor-community/` 开头，还有一些我们开发的插件，以 `@alitajs/` 开头。可以到 [plugins.md](./plugins) 查看目前常用的一些插件。当然，也可以自己从网上找一些其他插件，可能并不是以这些前缀开头。
 
 这里以 `@capacitor/device` 插件为例介绍下插件怎么使用。
 
