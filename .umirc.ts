@@ -3,4 +3,6 @@ export default {
   base: '/alitajs-native/',
   publicPath: process.env.NODE_ENV === 'production' ? '/alitajs-native/' : '/',
   hash: true,
+  exportStatic: {},
+  ssr: {},
 };
