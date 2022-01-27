@@ -15,7 +15,7 @@ yarn
 ## 安装 `alita-native` 插件
 
 ```sh
-yarn add alita-native
+yarn add -D alita-native
 ```
 
 修改 `config/config.ts`

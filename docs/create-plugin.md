@@ -106,7 +106,7 @@ CAP_PLUGIN(EchoPlugin, "Echo",
 cd example
 yarn create alita .
 yarn
-yarn add ..
+yarn add file:..
 ```
 
 然后参考 [快速开始](./quick-start) 教程，初始化原生项目，使用测试该插件
