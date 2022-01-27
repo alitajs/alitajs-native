@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # 插件
 
 官方插件: [https://capacitorjs.com/docs/apis](https://capacitorjs.com/docs/apis)
