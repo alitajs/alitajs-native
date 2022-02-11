@@ -25,7 +25,7 @@
     "@capacitor/storage": "^1.2.3",
     "@capacitor/toast": "^1.0.6",
     "@umijs/plugin-helmet": "^1.1.4",
-    "antd-mobile": "^5.0.0",
+    "antd-mobile": "^5.0.0-rc.26",
     "umi": "^3.5.20"
   },
   "devDependencies": {
