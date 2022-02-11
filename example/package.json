@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@alitajs/barcode": "^1.0.2",
+    "@alitajs/fileviewer": "^1.0.2",
+    "@alitajs/http": "^2.0.3",
     "@capacitor/action-sheet": "^1.0.6",
     "@capacitor/android": "^3.3.3",
     "@capacitor/app": "^1.0.7",
@@ -22,6 +25,7 @@
     "@capacitor/storage": "^1.2.3",
     "@capacitor/toast": "^1.0.6",
     "@umijs/plugin-helmet": "^1.1.4",
+    "antd-mobile": "^5.0.0",
     "umi": "^3.5.20"
   },
   "devDependencies": {
