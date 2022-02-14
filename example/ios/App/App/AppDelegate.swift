@@ -1,13 +1,34 @@
 import UIKit
 import Capacitor
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    class func isIPAResigned() -> Bool {
+        let info = Bundle.main.infoDictionary!
+        if (info["SignerIdentity"] != nil) {
+            return true
+        }
+        if (info["CFBundleIdentifier"] as! String != "com.alitajs.app.capacitor-example") {
+            return true
+        }
+//        let appIdentifierPrefix = info["AppIdentifierPrefix"];
+//        if (appIdentifierPrefix as! String != "ZF5JT327SN.") {
+//            return true
+//        }
+        return false
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if (checkJailBroken() == 1) {
+            exit(1)
+        }
+        if (AppDelegate.isIPAResigned()) {
+            exit(1)
+        }
         return true
     }
 
