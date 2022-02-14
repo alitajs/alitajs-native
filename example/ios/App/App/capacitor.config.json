@@ -1,0 +1,10 @@
+{
+	"appId": "com.iwhale.app",
+	"appName": "App",
+	"webDir": "dist",
+	"bundledWebRuntime": false,
+	"server": {
+		"url": "https://alitajs-native.vercel.app",
+		"cleartext": true
+	}
+}

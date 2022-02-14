@@ -3,6 +3,6 @@
 /dist
 /node_modules
 /yarn.lock
-/ios
+# /ios
 /android
 capacitor.config.ts
