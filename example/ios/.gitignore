@@ -2,6 +2,7 @@ App/build
 App/Pods
 App/Podfile.lock
 App/App/public
+App/symbols
 DerivedData
 xcuserdata
 
