@@ -1,23 +1,49 @@
 import UIKit
 import Capacitor
+import Security
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    class func bundleSeedID() -> String? {
+        let queryLoad: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "bundleSeedID" as AnyObject,
+            kSecAttrService as String: "" as AnyObject,
+            kSecReturnAttributes as String: kCFBooleanTrue,
+        ]
+        
+        var result: AnyObject?
+        var status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(queryLoad as CFDictionary, UnsafeMutablePointer($0))
+        }
+        
+        if status == errSecItemNotFound {
+            status = withUnsafeMutablePointer(to: &result) {
+                SecItemAdd(queryLoad as CFDictionary, UnsafeMutablePointer($0))
+            }
+        }
+        
+        if status == noErr {
+            if let resultDict = result as? [String: Any], let accessGroup = resultDict[kSecAttrAccessGroup as String] as? String {
+                let components = accessGroup.components(separatedBy: ".")
+                return components.first
+            } else {
+                return nil
+            }
+        } else {
+            print("Error getting bundleSeedID to Keychain")
+            return nil
+        }
+    }
+    
     class func isIPAResigned() -> Bool {
-        let info = Bundle.main.infoDictionary!
-        if (info["SignerIdentity"] != nil) {
+        let appIdentifierPrefix = AppDelegate.bundleSeedID()
+        if (appIdentifierPrefix != nil && appIdentifierPrefix != "ZF5JT327SN") {
             return true
         }
-        if (info["CFBundleIdentifier"] as! String != "com.alitajs.app.capacitor-example") {
-            return true
-        }
-//        let appIdentifierPrefix = info["AppIdentifierPrefix"];
-//        if (appIdentifierPrefix as! String != "ZF5JT327SN.") {
-//            return true
-//        }
         return false
     }
 
