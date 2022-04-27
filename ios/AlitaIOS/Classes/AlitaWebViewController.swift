@@ -43,7 +43,7 @@ import Capacitor
     
     open override func instanceDescriptor() -> InstanceDescriptor {
         let descriptor: InstanceDescriptor
-        let alitaBundle = Bundle(for: Self.self);
+        let alitaBundle = Bundle(for: AlitaWebViewController.self);
         if self.appURL != nil || self.serverURL != nil {
             // 如果 configURL 为空，那么使用 AlitaIOS 内置的 capacitor.config.json
             self.configURL = self.configURL ?? alitaBundle.url(forResource: "capacitor.config", withExtension: "json")
