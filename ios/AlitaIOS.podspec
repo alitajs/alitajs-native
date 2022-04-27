@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AlitaIOS'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Alita iOS SDK'
   s.description      = <<-DESC
 Alita iOS SDK is a wrapper of Capacitor. Support open web through URL or custom web folder.
